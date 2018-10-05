@@ -1,0 +1,351 @@
+$bgColor: #fff;
+$text: #575757;
+$dividerBgColor: #C7CAC3;
+$outerCircleBgColor: #C7CAC2;
+$innerCircleBgColor: #819496;
+$full: 100%;
+$center: 0 auto;
+$inlineBlock: inline-block;
+
+@font-face {
+    font-family: 'OpenSans Light';
+    src: url('assets/fonts/opensans-light-webfont.eot');
+    src: url('assets/fonts/opensans-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fonts/opensans-light-webfont.woff2') format('woff2'),
+         url('assets/fonts/opensans-light-webfont.woff') format('woff'),
+         url('assets/fonts/opensans-light-webfont.ttf') format('truetype'),
+         url('assets/fonts/opensans-light-webfont.svg#open_sanslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSans Semibold';
+    src: url('assets/fonts/opensans-semibold-webfont.eot');
+    src: url('assets/fonts/opensans-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fonts/opensans-semibold-webfont.woff2') format('woff2'),
+         url('assets/fonts/opensans-semibold-webfont.woff') format('woff'),
+         url('assets/fonts/opensans-semibold-webfont.ttf') format('truetype'),
+         url('assets/fonts/opensans-semibold-webfont.svg#open_sanssemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Vidaloka Regular';
+    src: url('assets/fonts/vidaloka-regular-webfont.eot');
+    src: url('assets/fonts/vidaloka-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fonts/vidaloka-regular-webfont.woff2') format('woff2'),
+         url('assets/fonts/vidaloka-regular-webfont.woff') format('woff'),
+         url('assets/fonts/vidaloka-regular-webfont.ttf') format('truetype'),
+         url('assets/fonts/vidaloka-regular-webfont.svg#vidaloka_regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h1 {
+	font-family: "Vidaloka Regular";
+	font-size: 40px;
+	margin: 0;
+}
+
+h2 {
+	font-family: "OpenSans Semibold";
+	font-size: 24px;
+	margin-top: 0;
+
+	span {
+		font-weight: normal;
+	}
+}
+
+a, 
+a:hover,
+a:visited {
+	color: $text;
+	text-decoration: none;
+}
+
+strong {
+	font-family: "OpenSans Semibold"
+}
+
+html {
+	height: $full;
+
+	body {
+		font-family: "OpenSans Light";
+		font-size: 18px;
+		margin: $center;
+		height: $full;
+		color: $text;		
+
+		#bg {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			z-index:-1;
+			background-image: url('assets/images/maple-leaves.jpg');
+			background-color: $bgColor;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center center;
+		}
+
+		#base {
+			background-color: rgba(255, 255, 255, 0.9);
+			margin: $center;
+			width: 80%;
+			border-radius: 12px;
+
+			header {
+				margin-top: 19px;
+				width: $full;
+				height: 270px;
+				border-bottom: solid 11px $dividerBgColor;
+				
+				.wrapper {
+					padding-top: 15px;
+
+					#logo {
+						width: 392px;
+						height: 228px;
+						background-image: url('assets/images/paula-bramwell-enlighten-empower-evolve.png');
+						background-repeat: no-repeat;
+						background-size: contain;
+						display: $inlineBlock;
+						margin-left: calc(50% - 319px);
+						opacity: 1;
+						transition: 300ms;
+
+						&.fade {
+							opacity: 1;
+						}
+					}
+
+					ul {
+						padding: 0 0 0 37px;
+						margin: 0;
+						display: $inlineBlock;
+						vertical-align: super;
+
+						li {
+							margin: 0;
+							padding: 0;
+							display: $inlineBlock;
+						}
+					}
+				}
+			}
+			
+			.main-nav {
+
+				ul {
+					justify-content: center;
+					padding: 0;
+					display: flex;
+					flex-wrap: wrap;
+					list-style: none;
+					margin: 0 auto;
+    				width: 90%;
+				}
+
+				li {
+
+					&:first-child {
+						margin-left: 18px;
+					}
+				}
+
+				a {
+					padding: 1.25rem 0.5rem;
+					font-size: 1.5rem;
+					max-width: 260px;
+					font-weight: bold;
+					text-decoration: none;
+					display: flex;
+					align-items: flex-start;
+					
+					&:hover, &:focus, &.active {
+						background: rgba(199,202,195, 0.5)
+					}
+				}
+
+				span {
+					display: block;
+					font-size: 1rem;
+					font-weight: normal;
+					color: #888;
+					margin: 0.25rem 0 0 0;
+				}
+
+				&.outlines {
+					* {
+						outline: 1px solid rgba(red, 0.5); 
+					}
+				}
+			}
+
+			section {
+				border-bottom: solid 31px $dividerBgColor;
+				padding: 49px 0;
+				
+				.wrapper {
+					margin: $center;
+					width: 90%;
+
+					#portrait {
+						display: $inlineBlock;
+						width: 348px;
+						height: 345px;
+						background-size: contain;
+						background-repeat: no-repeat;
+						opacity: 0;
+						transition: 300ms;
+						&.fade {
+							opacity: 1;
+						}
+					}
+
+					#content {
+						//background-color: rgba(255, 255, 255, 0.7);
+						display: $inlineBlock;
+						margin-left: 23px;
+						vertical-align: top;
+
+						ul {
+						
+							li {
+								padding: 3px 0;
+							}
+						}
+					}
+				}
+			}
+
+			footer {
+				width: $full;
+				border-top: solid 1px $dividerBgColor;
+				margin: 7px 0 15px 0;
+				padding-bottom: 15px;
+
+				ul {
+					margin: 17px 0 0 0;
+					padding: 0;
+					text-align: center;
+
+					li {
+						padding: 0 0 0 2px;
+						margin: 3px 0;
+						display: inline-block;
+					}
+				}
+			}
+		}	
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+	h1 {
+		font-size: 30px;
+	}
+
+	h2 {
+		font-size: 18px;
+	}
+
+	html {
+		
+		body {
+
+			#base {
+
+				header {
+					height: 205px;
+					padding-bottom: 17px;
+
+					.wrapper {
+					
+						#logo {
+							width: 287px;
+							height: 172px;
+							margin-left: calc(50% - 160px);
+						}
+
+						ul {
+							display: block;
+							text-align: center;
+						}
+					}
+			}
+
+			section {
+				padding: 37px 0 0 0;;
+				
+				.wrapper {
+		
+					#content {
+						margin-left: 0;
+					}
+				}
+			}
+			}
+		}
+	}
+} 
+
+@media only screen and (max-width: 768px) {
+	html {
+		
+		body {
+			font-size: 83%;	
+
+			#base {
+
+				header {
+				
+					.wrapper {
+					
+						#logo {
+							margin-left: calc(50% - 163px);
+						}
+					}
+				}
+
+				.main-nav {
+
+					li {
+						width: 100%;
+
+						&:first-child {
+							margin-left: 0;
+						}
+
+						a {
+							justify-content: center;
+							font-size: 1.25rem;
+							padding: 0.6rem 0rem;
+							max-width: 100%;
+						}
+					}
+				}
+
+				section {
+					padding: 17px 0 0 0;
+					
+					.wrapper {
+					
+						#content {
+							width: 100%;
+							margin-left: 0;
+						}
+					}
+				}	
+			}
+		}
+	}
+}
