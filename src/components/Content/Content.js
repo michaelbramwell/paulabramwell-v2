@@ -1,24 +1,44 @@
-import React from 'react'
-import { Route, Switch, Redirect } from "react-router-dom";
-import MyApproach from './MyApproach';
-import Home from './Home';
-import Faqs from './Faqs';
-import TherapyForAdolescents from './TherapyForAdolescents';
+import React, { Component } from 'react'
+import { Route, Switch, Redirect, withRouter } from "react-router-dom";
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import Body from './Body';
+import { getData } from '../../reducer'
 
-const Content = () => (
-    <section>
-        <div className="wrapper">
-            <div id="content">
-                <Switch>
-                    <Route exact path='/' component={Home} />
-                    <Route path='/my-approach' component={MyApproach} />
-                    <Route path='/therapy-for-adolescents' component={TherapyForAdolescents} />
-                    <Redirect from="/faq" to="/faqs" />
-                    <Route path='/faqs' component={Faqs} />
-                </Switch>
-            </div>
-        </div>
-    </section>
-)
+class Content extends Component {
+    componentDidMount() {
+        this.props.getData()
+    }
 
-export default Content;
+    render() {
+        return (
+            <section>
+                <div className="wrapper">
+                    <div id="content">
+                        <Switch>
+                            <Redirect from="/faq" to="/faqs" />
+                            {this.props.data.length > 1 && this.props.data.map((m) => (
+                                <Route key={m.id} exact path={m.slug === "home" ? "/" : "/" + m.slug} component={Body} />
+                            ))}
+                        </Switch>
+                    </div>
+                </div>
+            </section>
+        )
+    }
+}
+
+const mapStateToProps = (state) => {
+    return ({
+        data: state.Result.data
+    })
+}
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    getData
+}, dispatch)
+
+export default withRouter(connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Content))

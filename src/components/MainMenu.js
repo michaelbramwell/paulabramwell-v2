@@ -1,15 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-const MainMenu = () => (
+const MainMenu = (props) => (
     <nav role='navigation' className="main-nav" id="main-nav">
         <ul id="main-nav-list">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/my-approach">My Approach</Link></li>
-            <li><Link to="/therapy-for-adolescents"><div>Therapy for Adolescents</div></Link></li>
-            <li><Link to="/faqs"><div>FAQs</div></Link></li>
+            {props.data.length > 1 && props.data.map((m) =>
+                (<li key={m.id}><Link to={(m.slug === "home" ? "/" : "/" + m.slug)}>{m.name}</Link></li>)
+            )}
         </ul>
     </nav>
 )
 
-export default MainMenu;
+const mapStateToProps = (state) => {
+    return ({
+        data: state.Result.data
+    })
+}
+
+export default withRouter(connect(
+    mapStateToProps,
+    {}
+)(MainMenu))
