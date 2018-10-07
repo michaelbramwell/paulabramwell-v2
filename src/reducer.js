@@ -9,7 +9,7 @@ const initialState = {
 
 export const getData = () => {
   return dispatch => {
-    axios.get('http://wp.paulabramwell.com.au/wp-json/wp/v2/pages?order=asc')
+    axios.get('https://wp.paulabramwell.com.au/wp-json/wp/v2/pages?order=asc')
       .then(function (response) {
         return dispatch({
           type: GET_DATA,
