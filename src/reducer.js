@@ -16,6 +16,7 @@ export const getData = () => {
           value: response.data.map((m) => ({
             name: m.title.rendered,
             slug: m.slug,
+            link: m.link,
             content: m.content.rendered,
             id: m.id
           }))

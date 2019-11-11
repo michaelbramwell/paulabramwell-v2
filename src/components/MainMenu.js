@@ -7,8 +7,11 @@ const MainMenu = (props) => {
     return (
         <nav role='navigation' className="main-nav" id="main-nav">
             <ul id="main-nav-list">
-                {props.data.length > 1 && props.data.map((m) =>
-                    (
+                {props.data.length > 1 && props.data.map((m) => {
+
+                    if(m.link.split("/").length > 5) return <></>
+
+                    return (
                         <li key={m.id}>
                             <Link to={(m.slug === "home" ? "/" : "/" + m.slug)}
                                 className={props.location.pathname.includes(m.slug)
@@ -17,6 +20,7 @@ const MainMenu = (props) => {
                             </Link>
                         </li>
                     )
+                }
                 )}
             </ul>
         </nav>
