@@ -11,19 +11,38 @@ class Body extends Component {
         ReactGA.pageview(this.props.match.path);
     }
 
-    render() {
-        if (this.props.data.length <= 1) return (<></>)
+    getMatchingContent = (data, location) => {
+        const matchParent =  data.find((f) => location.pathname.includes(f.slug) 
+            || (location.pathname === "/" && f.slug === "home"));
 
-        const match = this.props.data.find((f) => this.props.match.path.includes(f.slug)
-            || (this.props.match.path === "/" && f.slug === "home"))
+        let matchChild = null;
+
+        for(let i = 0; i < data.length; i++) {
+            if (!data[i].children || data[i].children.length === 0) {
+                continue;
+            }
+
+            matchChild = data[i].children.find(child => location.pathname.includes(child.slug));
+            if(matchChild) break;
+        }
+
+        return matchChild || matchParent;
+    }
+
+    render() {
+        const { data, location } = this.props;
+
+        if (data.length <= 1) return (<></>)
+
+        const dataMatch = this.getMatchingContent(data, location);
 
         return (
             <>
                 <Helmet>
-                    <title>{`${match.name} - ${PageTitle}`}</title>
+                    <title>{`${dataMatch.name} - ${PageTitle}`}</title>
                 </Helmet>
 
-                {Parser(match.content)}
+                {Parser(dataMatch.content)}
             </>
         )
     }

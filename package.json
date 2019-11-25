@@ -8,7 +8,7 @@
     "history": "^4.7.2",
     "html-react-parser": "^0.4.7",
     "node-sass": "^4.9.3",
-    "react": "^16.5.2",
+    "react": "^16.12.0",
     "react-dom": "^16.5.2",
     "react-ga": "^2.5.3",
     "react-helmet": "^5.2.0",

@@ -6,9 +6,16 @@ import Body from './Body';
 import { getData } from '../../reducer'
 
 class Content extends Component {
+
     componentDidMount() {
         this.props.getData()
     }
+
+    getChildSlug = (parentId, children) => {
+        const { location } = this.props;
+        const child = children.find((f) => parentId === f.parent && location.pathname.includes(f.slug));
+        return child ? child.slug : "";
+    };
 
     render() {
         return (
@@ -18,7 +25,15 @@ class Content extends Component {
                         <Switch>
                             <Redirect from="/faq" to="/faqs" />
                             {this.props.data.length > 1 && this.props.data.map((m) => (
-                                <Route key={m.id} exact path={m.slug === "home" ? "/" : "/" + m.slug} component={Body} />
+                                <Route 
+                                    key={m.id} 
+                                    exact 
+                                    path={m.slug === "home" 
+                                        ? "/" 
+                                        : m.children && m.children.length > 0 
+                                            ? "/" + m.slug + "/" + this.getChildSlug(m.id, m.children) 
+                                            : "/" + m.slug} 
+                                    component={Body} />
                             ))}
                         </Switch>
                     </div>
