@@ -32,20 +32,29 @@ const MainMenu = (props) => {
             <ul id="main-nav-list">
                 {props.data.length > 0 && props.data.map((m) => {
                     return (
-                        <li key={m.id}>
-                            <Link
-                                to={(m.slug === "home" ? "/" : "/" + m.slug)}
-                                onMouseEnter={() => setSubMenu(true)}
-                                className={props.location.pathname.includes(m.slug)
-                                    || (props.location.pathname === "/" && m.slug === "home") ? "active" : ""}>
-                                {m.name}
-                            </Link>
+                        <>
+                            <li key={m.id}>
+                                <Link
+                                    to={(m.slug === "home" ? "/" : "/" + m.slug)}
+                                    className={props.location.pathname.includes(m.slug)
+                                        || (props.location.pathname === "/" && m.slug === "home") ? "active" : ""}>
+                                    {m.name}
+                                </Link>
 
-                            {/* {subMenu(m.id, m.slug, m.children)} */}
-                        </li>
+                                {/* {subMenu(m.id, m.slug, m.children)} */}
+                            </li>
+                        </>
                     )
                 }
                 )}
+                
+                <li>
+                    <Link
+                        to={"/blog"}
+                        className={props.location.pathname === "/blog" ? "active" : ""}>
+                        Blog
+                    </Link>
+                </li>
             </ul>
         </nav>
     )

@@ -3,12 +3,15 @@ import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Body from './Body';
-import { getData } from '../../reducer'
+import Post from './Post';
+import Posts from './Posts';
+import { getData, getPosts } from '../../actions'
 
 class Content extends Component {
 
     componentDidMount() {
-        this.props.getData()
+        this.props.getData();
+        this.props.getPosts();
     }
 
     getChildSlug = (parentId, children) => {
@@ -35,6 +38,21 @@ class Content extends Component {
                                             : "/" + m.slug} 
                                     component={Body} />
                             ))}
+                            
+                            {this.props.posts.length > 1 && this.props.posts.map((m) => (
+                                <Route 
+                                    key={m.id} 
+                                    exact 
+                                    path={"/blog/" + m.slug} 
+                                    component={Post} />
+                            ))}
+                            
+                            <Route 
+                                    key={100} 
+                                    exact 
+                                    path={"/blog/"} 
+                                    component={Posts} />
+
                         </Switch>
                     </div>
                 </div>
@@ -45,12 +63,13 @@ class Content extends Component {
 
 const mapStateToProps = (state) => {
     return ({
-        data: state.Result.data
+        data: state.Result.data,
+        posts: state.Result.posts
     })
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    getData
+    getData, getPosts
 }, dispatch)
 
 export default withRouter(connect(
