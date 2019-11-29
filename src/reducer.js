@@ -9,7 +9,7 @@ const initialState = {
 
 export const getData = () => {
   return dispatch => {
-    axios.get('https://wp.paulabramwell.com.au/wp-json/wp/v2/pages?orderby=menu_order&order=asc')
+    axios.get('https://wp.paulabramwell.com.au/wp-json/wp/v2/pages?orderby=menu_order&order=asc&per_page=20')
       .then(function (response) {
         const unstructured = response.data.map((m) => ({
           name: m.title.rendered,
@@ -31,7 +31,6 @@ export const getData = () => {
             children: children
           }
         });
-        console.log(combined)
 
         return dispatch({
           type: GET_DATA,

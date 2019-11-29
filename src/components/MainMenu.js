@@ -15,7 +15,6 @@ const MainMenu = (props) => {
                     children.map((m) => {
                         return (<li key={m.id}>
                             <Link to={parentSlug + '/' + m.slug}
-                                onMouseOut={() => setSubMenu(false)}
                                 className={props.location.pathname.includes(m.slug)
                                     ? "active" : ""}>
                                 {m.name}
@@ -42,7 +41,7 @@ const MainMenu = (props) => {
                                 {m.name}
                             </Link>
 
-                            {subMenu(m.id, m.slug, m.children)}
+                            {/* {subMenu(m.id, m.slug, m.children)} */}
                         </li>
                     )
                 }
