@@ -20,7 +20,7 @@ class Post extends Component {
     render() {
         const { posts, location } = this.props;
 
-        if (posts.length <= 1) return (<></>)
+        if (posts.length === 0) return (<></>)
 
         const dataMatch = this.getMatchingContent(posts, location);
 

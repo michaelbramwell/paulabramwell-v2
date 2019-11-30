@@ -15,9 +15,9 @@ class App extends Component {
     return (
       <>
         <div id="bg"></div>
+        <MainMenu />
         <div id="base">
           <Header />
-          <MainMenu />
           <Content />
           <Footer />
         </div>

@@ -39,7 +39,7 @@ class Content extends Component {
                                     component={Body} />
                             ))}
                             
-                            {this.props.posts.length > 1 && this.props.posts.map((m) => (
+                            {this.props.posts.length > 0 && this.props.posts.map((m) => (
                                 <Route 
                                     key={m.id} 
                                     exact 

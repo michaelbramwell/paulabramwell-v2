@@ -9,6 +9,7 @@
     "html-react-parser": "^0.4.7",
     "node-sass": "^4.9.3",
     "react": "^16.12.0",
+    "react-burger-menu": "^2.6.13",
     "react-dom": "^16.5.2",
     "react-ga": "^2.5.3",
     "react-helmet": "^5.2.0",

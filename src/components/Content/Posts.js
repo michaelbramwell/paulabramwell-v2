@@ -15,7 +15,7 @@ class Posts extends Component {
     render() {
         const { posts, location } = this.props;
 
-        if (posts.length <= 1) return (<p>No Posts :(</p>)
+        if (posts.length === 0) return (<p>No Posts :(</p>)
 
         return (
             <>
@@ -26,13 +26,13 @@ class Posts extends Component {
                 {
                     posts.map((p) => {
                         return (
-                            <div>
+                            <div key={p.id}>
                                 <h2>{p.name}</h2>
-                                <div>{Parser(p.excerpt)}</div>
+                                <div dangerouslySetInnerHTML={{__html: p.excerpt}} />
                                 <div>
                                     <Link
                                         to={`/blog/${p.slug}`}
-                                        className={location.pathname === "/blog"}>
+                                        className={location.pathname === "/blog" ? "active" : ""}>
                                         {'Read on'}
                                     </Link>
                                 </div>
