@@ -4,42 +4,49 @@ import { connect } from 'react-redux'
 import { slide as Menu } from 'react-burger-menu'
 
 const MainMenu = (props) => {
-    const [showSubMenu, setSubMenu] = useState(false);
+    const [isOpen, setOpen] = useState(0);
+
     const { posts } = props
 
-    const subMenu = (parentId, parentSlug, children) => {
+    const subMenu = (parentSlug, children) => {
 
-        if (!children || children.length === 0 || !showSubMenu) return <></>
+        if (!children || children.length === 0) return <></>
 
         return (
-            <ul>
+            <div>
                 {
                     children.map((m) => {
-                        return (<li key={m.id}>
-                            <Link to={parentSlug + '/' + m.slug}
+                        return (<div key={m.id}>
+                            <Link to={"/" + parentSlug + '/' + m.slug}
+                                onClick={() => setOpen(0)}
                                 className={props.location.pathname.includes(m.slug)
                                     ? "active" : ""}>
                                 {m.name}
                             </Link>
-                        </li>
+                        </div>
                         )
                     })
                 }
-            </ul>
+            </div>
         )
     }
 
     return (
         <nav role='navigation' className="main-nav" id="main-nav">
-            <Menu id="main-nav-list">
+            <Menu id="main-nav-list" isOpen={isOpen}>
                 {props.data.length > 0 && props.data.map((m) => {
                     return (
                         <Link
                             key={m.id}
                             to={(m.slug === "home" ? "/" : "/" + m.slug)}
+                            onClick={() => setOpen(isOpen - 1)}
                             className={props.location.pathname.includes(m.slug)
-                                || (props.location.pathname === "/" && m.slug === "home") ? "menu-item active" : "menu-item"}>
+                                || (props.location.pathname === "/" && m.slug === "home") 
+                                ? "menu-item active" 
+                                : "menu-item"}>
                             {m.name}
+
+                            {subMenu(m.slug, m.children)}
                         </Link>
                     )
                 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
-import Parser from 'html-react-parser'
 import { Helmet } from 'react-helmet'
 import PageTitle from '../PageTitle';
 import ReactGA from 'react-ga'

@@ -354,18 +354,38 @@ html {
 	position: fixed;
 	width: 36px;
 	height: 30px;
-	left: 36px;
-	top: 36px;
+	left: 150px;
+	top: 50px;
+
+	@media only screen and (max-width: 1024px) {
+		left: 125px;
+	}
+
+	@media only screen and (max-width: 768px) {
+		left: 100px;
+	}
+
+	@media only screen and (max-width: 615px) {
+		left: 360px;
+	}
+
+	@media only screen and (max-width: 470px) {
+		left: 320px;
+	}
+
+	@media only screen and (max-width: 375px) {
+		left: 280px;
+	}
   }
   
   /* Color/shape of burger icon bars */
   .bm-burger-bars {
-	background: #373a47;
+	background: rgba(87, 87, 87, 0.5);
   }
   
   /* Color/shape of burger icon bars on hover*/
   .bm-burger-bars-hover {
-	background: #a90000;
+	background: #575757;
   }
   
   /* Position and sizing of clickable cross button */
@@ -376,7 +396,7 @@ html {
   
   /* Color/shape of close button cross */
   .bm-cross {
-	background: #bdc3c7;
+	background: #575757;
   }
   
   /*
@@ -385,12 +405,13 @@ html {
   */
   .bm-menu-wrap {
 	position: fixed;
+	top: 0;
 	height: 100%;
   }
   
   /* General sidebar styles */
   .bm-menu {
-	background: #373a47;
+	background: rgba(255, 255, 255, 0.9);
 	padding: 2.5em 1.5em 0;
 	font-size: 1.15em;
   }
@@ -402,16 +423,27 @@ html {
   
   /* Wrapper for item list */
   .bm-item-list {
-	color: #b8b7ad;
+	color: #575757;
 	padding: 0.8em;
   }
   
   /* Individual item */
   .bm-item {
 	display: inline-block;
+	font-family: "OpenSans Semibold";
+	padding-bottom: 0.5em;
+
+		& div {
+			font-family: "OpenSans Light";
+			font-size: 0.9em;
+			padding-left: 0.2em;
+			padding-top: 0.2em;
+			padding-bottom: 0.2em;
+		}
   }
   
   /* Styling of overlay */
   .bm-overlay {
 	background: rgba(0, 0, 0, 0.3);
+	top: 0;
   }
