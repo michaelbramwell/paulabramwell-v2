@@ -297,6 +297,27 @@ html {
 	}
 } 
 
+.readon {
+	font-weight: bold;
+}
+
+.post {
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	
+	&:not(:last-child) {
+		border-bottom: dotted 1px #C7CAC3;
+	}
+
+	h2 {
+		margin-bottom: 10px;
+	}
+
+	img {
+		width: 100%
+	}
+}
+
 @media only screen and (max-width: 768px) {
 	html {
 		

@@ -29,7 +29,7 @@ class Post extends Component {
                 <Helmet>
                     <title>{`${dataMatch.name} - ${PageTitle}`}</title>
                 </Helmet>
-
+                <h1>{dataMatch.name}</h1>
                 {Parser(dataMatch.content)}
             </>
         )
