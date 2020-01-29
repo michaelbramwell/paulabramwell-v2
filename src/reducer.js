@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { GET_POSTS, GET_PAGES } from './actions';
+import { GET_POSTS, GET_PAGES, GET_POST_IMAGE } from './actions';
 
 const initialState = {
   data: [{}],
@@ -14,10 +14,18 @@ const Result = (state = initialState, action) => {
         data: action.value
       }
 
-      case GET_POSTS:
+    case GET_POSTS:
       return {
         ...state,
         posts: action.value
+      }
+
+    case GET_POST_IMAGE:
+      return {
+        ...state,
+        postImages: state.postImages 
+          ? {...state.postImages, ...action.value} 
+          : action.value
       }
 
     default:

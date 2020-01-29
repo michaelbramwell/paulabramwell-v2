@@ -222,6 +222,31 @@ html {
 								padding: 3px 0;
 							}
 						}
+
+						img {
+							max-width: 100%;
+						} 
+
+						.inline-img-left {
+							img {
+								float: left;
+								padding-right: 2px;
+							}
+							
+						}
+
+						.inline-img-right {
+							img {
+								float: right;
+								padding-right: 2px;
+							}
+						}
+
+						.posts-item-image {
+							float: left;
+							padding-right: 5px;
+							width: 25%;
+						}
 					}
 				}
 			}

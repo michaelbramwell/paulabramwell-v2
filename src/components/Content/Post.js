@@ -23,13 +23,11 @@ class Post extends Component {
         if (posts.length === 0) return (<></>)
 
         const dataMatch = this.getMatchingContent(posts, location);
-
         return (
             <>
                 <Helmet>
                     <title>{`${dataMatch.name} - ${PageTitle}`}</title>
                 </Helmet>
-                <h1>{dataMatch.name}</h1>
                 {Parser(dataMatch.content)}
             </>
         )
@@ -38,11 +36,11 @@ class Post extends Component {
 
 const mapStateToProps = (state) => {
     return ({
-        posts: state.Result.posts
+        posts: state.Result.posts,
     })
 }
 
 export default connect(
     mapStateToProps,
-    {}
+    null
 )(Post)

@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const GET_PAGES = 'result/GET_PAGES';
 export const GET_POSTS = 'result/GET_POSTS';
+export const GET_POST_IMAGE = 'result/GET_POST_IMAGE';
 
 export const getData = () => {
     return dispatch => {
@@ -50,12 +51,40 @@ export const getData = () => {
             content: m.content.rendered,
             id: m.id,
             date: m.date,
-            excerpt: m.excerpt.rendered
+            excerpt: m.excerpt.rendered,
+            imageEndpoint: m._links["wp:attachment"] && m._links["wp:attachment"].length > 0 
+              ? m._links["wp:attachment"][0].href : "" 
           }));
           
           return dispatch({
             type: GET_POSTS,
             value: posts
+          })
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  };
+
+  export const getPostImage = (postId, postEndpoint) => {
+    console.log(postId, postEndpoint)
+    return dispatch => {
+      axios.get(postEndpoint)
+        .then(function (response) {
+          const imagesMeta = response.data.map((m) => ({
+            imageUrl: m.source_url
+          }));
+          
+          return dispatch({
+            type: GET_POST_IMAGE,
+            value: imagesMeta && imagesMeta.length > 0 
+              ? {
+                  postId, imageUrl: imagesMeta[0].imageUrl
+                } 
+              : {
+                postId, imageUrl: ""
+              }
           })
         })
         .catch(function (error) {
