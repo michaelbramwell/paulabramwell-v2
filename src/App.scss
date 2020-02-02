@@ -230,7 +230,7 @@ html {
 						.inline-img-left {
 							img {
 								float: left;
-								padding-right: 2px;
+								padding-right: 11px;
 							}
 							
 						}
@@ -238,13 +238,13 @@ html {
 						.inline-img-right {
 							img {
 								float: right;
-								padding-right: 2px;
+								padding-right: 11px;
 							}
 						}
 
 						.posts-item-image {
 							float: left;
-							padding-right: 5px;
+							padding-right: 11px;
 							width: 25%;
 						}
 					}
@@ -329,6 +329,9 @@ html {
 .post {
 	margin-bottom: 20px;
 	padding-bottom: 10px;
+	clear: both;
+	overflow: hidden;
+	position: relative;
 	
 	&:not(:last-child) {
 		border-bottom: dotted 1px #C7CAC3;
