@@ -247,6 +247,16 @@ html {
 							padding-right: 11px;
 							width: 25%;
 						}
+						
+						.cta {
+							float: left;
+							width: 32%;
+							margin-left: 10px;
+							img {
+								width: 100% !important;
+							}
+						}
+
 					}
 				}
 			}
@@ -390,6 +400,10 @@ html {
 						#content {
 							width: 100%;
 							margin-left: 0;
+
+							.cta {
+								width: 100%;
+							}
 						}
 					}
 				}	

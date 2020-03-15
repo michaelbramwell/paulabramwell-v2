@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link, withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import PageTitle from '../PageTitle'
+import Parser from 'html-react-parser'
 import ReactGA from 'react-ga'
+import PageTitle from '../PageTitle'
 import { getPostImage } from '../../actions'
-import { pipe } from 'rxjs'
 
 const replaceHtml = (content) => {
     const body = content ? content.replace(/<(.|\n)*?>/gi, "") : ""
@@ -51,7 +51,7 @@ class Posts extends Component {
                                             {p.name}
                                         </Link>
                                     </h2>
-                                    <div>{replaceHtml(p.content)}</div>
+                                    <div>{Parser(replaceHtml(p.content))}</div>
                                     <div>
                                         <Link
                                             to={`/blog/${p.slug}`}
