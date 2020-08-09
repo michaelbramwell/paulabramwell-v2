@@ -82,6 +82,10 @@ html {
 		height: $full;
 		color: $text;		
 
+		#root {
+			max-width: 1540px;
+		}
+
 		#bg {
 			position: fixed;
 			width: 100%;
@@ -252,9 +256,15 @@ html {
 							float: left;
 							width: 32%;
 							margin-left: 10px;
+
+
 							img {
 								width: 100% !important;
 							}
+						}
+
+						.has-small-font-size {
+							font-size: 12px;
 						}
 
 					}
@@ -324,6 +334,10 @@ html {
 		
 					#content {
 						margin-left: 0;
+
+						.cta {
+							margin-left: 0;
+						}
 					}
 				}
 			}
@@ -417,7 +431,7 @@ html {
 	position: fixed;
 	width: 36px;
 	height: 30px;
-	left: 150px;
+	left: 160px;
 	top: 50px;
 
 	@media only screen and (max-width: 1024px) {
