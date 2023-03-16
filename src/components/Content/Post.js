@@ -8,6 +8,7 @@ import ReactGA from 'react-ga'
 class Post extends Component {
 
     componentDidMount() {
+        window.scrollTo(0, 0)
         ReactGA.pageview(this.props.match.path);
     }
 

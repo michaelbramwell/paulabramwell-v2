@@ -10,7 +10,7 @@ import { getPostImage } from '../../actions'
 
 const replaceHtml = (content) => {
     const body = content ? content.replace(/<(.|\n)*?>/gi, "") : ""
-    return body.substr(body, 200)
+    return body.length > 200 ? `${body.substr(body, 200)}...` : body.length
 }
 
 const getImageFromContent = (html) => {

@@ -11,7 +11,7 @@ const Footer = () => (
             <li>|</li>
             <li>paulabramwell.com.au</li>
             <li>|</li>
-            <li>16 Tanunda Drive, Rivervale, Western Australia  6103</li>
+            <li>276 South Terrace, South Fremantle, Western Australia, 6162</li>
         </ul>
     </footer>
 )
